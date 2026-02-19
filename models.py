@@ -20,6 +20,13 @@ class OrdemServico(Model):
     class Meta:
         database = db
 
+class Item(Model):
+    nome = CharField()
+    preco = DecimalField(decimal_places=2)
+
+    class Meta:
+        database = db
+
 # Cria as tabelas se não existirem
 db.connect()
-db.create_tables([Cliente, OrdemServico])
+db.create_tables([Cliente, OrdemServico, Item])
