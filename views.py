@@ -200,7 +200,8 @@ class FormularioCliente(ctk.CTkToplevel):
     def __init__(self, parent, modo="novo", cliente_id=None, callback=None):
         super().__init__(parent)
         self.title("Novo Cliente" if modo == "novo" else "Editar Cliente")
-        
+        self.grab_set()
+
         # AJUSTE AQUI: Aumentamos de 350 para 450 para caber os botões com folga
         self.geometry("400x450") 
         
@@ -486,6 +487,7 @@ class FormularioItem(ctk.CTkToplevel):
     def __init__(self, parent, modo="novo", item_id=None, callback=None):
         super().__init__(parent)
         self.title("Novo Item" if modo == "novo" else "Editar Item")
+        self.grab_set()
         self.geometry("350x250")
         self.resizable(False, False)
         self.modo = modo
@@ -735,6 +737,7 @@ class FormularioOS(ctk.CTkToplevel):
         self.title("Nova Ordem de Serviço" if modo == "novo" else "Editar Ordem de Serviço")
         self.geometry("500x650")
         self.resizable(False, False)
+        self.grab_set()
         self.modo = modo
         self.callback = callback
         self.os_id = os_id
