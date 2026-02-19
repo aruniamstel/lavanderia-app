@@ -200,16 +200,20 @@ class FormularioCliente(ctk.CTkToplevel):
     def __init__(self, parent, modo="novo", cliente_id=None, callback=None):
         super().__init__(parent)
         self.title("Novo Cliente" if modo == "novo" else "Editar Cliente")
-        self.geometry("400x350")
+        
+        # AJUSTE AQUI: Aumentamos de 350 para 450 para caber os botões com folga
+        self.geometry("400x450") 
+        
         self.resizable(False, False)
         self.modo = modo
         self.callback = callback
         self.cliente_id = cliente_id
         
-        # Widgets
+        # Garante que a janela fique na frente (importante para Toplevel)
+        self.grab_set() 
+        
         self.criar_campos()
         
-        # Se for editar, carrega dados
         if modo == "editar" and cliente_id:
             self.carregar_dados()
     
@@ -231,7 +235,7 @@ class FormularioCliente(ctk.CTkToplevel):
         
         ctk.CTkLabel(frame, text="Endereço", font=("Arial", 11)).pack(anchor="w")
         self.text_endereco = ctk.CTkTextbox(frame, height=80)
-        self.text_endereco.pack(fill="both", expand=True, pady=(5, 15))
+        self.text_endereco.pack(fill="x", pady=(5, 15))
         
         # Botões
         btn_frame = ctk.CTkFrame(frame, fg_color="transparent")
